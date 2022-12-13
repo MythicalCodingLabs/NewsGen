@@ -1,8 +1,8 @@
 const open = ["Welcome back, today we have news about", "Hello, todays news is,"]
 const person = ["Elon Musk", "Jeffery Bezozs","Albert Einstein", "Bill Nye","Chris Pratt"]
-const action = ["eating", "running", "hiding", "fucking"]
+const action = ["eating", "running", "hiding", "killing", "smelling"]
 const thing = ["a massive fish", "a live human","sphere", "packet of venna beef hot dogs", "Epi Pen"]
-const place = ["at vidcon.", "in a park", "in his house", "Mc Donald's", "Nantucket"]
+const place = ["at vidcon.", "in a park.", "in his house.", "at a Mc Donald's.", "in Nantucket."]
 const good = []
 const bad = []
 function genNews(){
