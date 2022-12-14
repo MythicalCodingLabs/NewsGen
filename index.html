@@ -35,11 +35,12 @@
     <p>Help grow the AI by giving data on our <a href="https://forms.gle/2vEpVyBpMyVx2nNX9">Google form.</a></p>
   </body>
   <script>
-    const open = ["Welcome back, today we have news about", "Hello, todays news is,"]
-    const person = ["Elon Musk", "Jeffery Bezozs","Albert Einstein", "Bill Nye","Chris Pratt", "Mickey Mouse", "Kevin Hart", "Cardi B", "Michel Jackson", "Frosty The Snowman", "Blake Shelton", "The Red Power ranger"]
+    const open = ["Breaking news!", "This just in,"]
+    const person = ["Elon Musk", "Jeffery Bezozs","Albert Einstein", "Bill Nye","Chris Pratt", "Mickey Mouse", "Kevin Hart", "Joe Biden", "Michel Jackson", "Frosty The Snowman", "Blake Shelton", "The Red Power ranger"]
     const action = ["eating", "running", "hiding", "killing", "smelling", "smoking", "licking", "bowling with", "assulting", "kissing", "burning", "feeding", "drinking", "dropkicking"]
     const thing = ["a massive fish", "a person","a sphere", "a packet of venna beef hot dogs", "an Epi Pen", "a small Gopher", "a knife", "lip balm", "The Declaration of Independence", "a Lemon", "a tube of Raspberry Flavored toothpaste"]
     const place = ["at vidcon.", "in a park.", "in his house.", "at a Mc Donald's.", "in Nantucket.", "in the Polar ice caps.", "at The US capital.", "in The Museum Of Science and Industry.", "in The Mall of America", "in The Death Star", "in a Hospital", "in a Gym"]
+    const action2 = ["eat", "run", "hide", "kill", "smell", "smoke", "lick", "bowl with", "assult", "kiss", "burn", "feed", "drink", "dropkick"]
     const good = []
     const bad = [12043,10042,10344,00141,00101,14023,10042,01334,04144,04042,00130,11324,12020,11044,02100,03334,14123,03133,13143,14131,01121]
 function genNews(){
@@ -48,21 +49,23 @@ function genNews(){
   var actionIn = action.at(Math.floor(Math.random() * action.length))
   var thingIn = thing.at(Math.floor(Math.random() * thing.length))
   var placeIn = place.at(Math.floor(Math.random() * place.length))
-  if(bad.includes(open.indexOf(openIn) + "" + person.indexOf(personIn) + action.indexOf(actionIn) + thing.indexOf(thingIn) + place.indexOf(placeIn))){
+  var actionIn2 = action2.at(Math.floor(Math.random() * action2.length))
+  var thingIn2 = thing.at(Math.floor(Math.random() * thing.length))
+  if(bad.includes(open.indexOf(openIn) + "" + person.indexOf(personIn) + action.indexOf(actionIn) + thing.indexOf(thingIn) + place.indexOf(placeIn) + action.indexOf(actionIn2) + thing.indexOf(thingIn2))){
    genNews()
   }
   else{
-    document.getElementById("output").innerHTML = openIn + " " + personIn + " " + actionIn + " " + thingIn + " " + placeIn;
+    document.getElementById("output").innerHTML = openIn + " " + personIn + " was caught " + actionIn + " " + thingIn + " " + placeIn + " After " + personIn + " was caught, he then proceeded to " + actionIn2 + " " + thingIn2 + ".";
     if(document.getElementById('dev').checked){
-      alert(openIn + " " + personIn + " " + actionIn + " " + thingIn + " " + placeIn)
+      alert(openIn + " " + personIn + " was caught " + actionIn + " " + thingIn + " " + placeIn + " After " + personIn + " was caught, he then proceeded to " + actionIn2 + " " + thingIn2 + ".")
       }
   }
   if(document.getElementById('dev').checked){
   if(confirm("Good?")){
-    good.push(open.indexOf(openIn) + "" + person.indexOf(personIn) + action.indexOf(actionIn) + thing.indexOf(thingIn) + place.indexOf(placeIn))
+    good.push(open.indexOf(openIn) + "" + person.indexOf(personIn) + action.indexOf(actionIn) + thing.indexOf(thingIn) + place.indexOf(placeIn) + action.indexOf(actionIn2) + thing.indexOf(thingIn2))
   }
   else{
-    bad.push(open.indexOf(openIn) + "" + person.indexOf(personIn) + action.indexOf(actionIn) + thing.indexOf(thingIn) + place.indexOf(placeIn))
+    bad.push(open.indexOf(openIn) + "" + person.indexOf(personIn) + action.indexOf(actionIn) + thing.indexOf(thingIn) + place.indexOf(placeIn) + action.indexOf(actionIn2) + thing.indexOf(thingIn2))
   }
 }
 }
