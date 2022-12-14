@@ -7,15 +7,26 @@
   </head>
 
   <body>
-    <button onclick="genNews()">Gen</button>
-    <p id="output"></p>
-    <hr>
-    <button onclick="printData()">printData</button>
-    <p id="data"></p>
-    <hr>
+    <div class="mainGen">
+    <h1>Generate random news</h1>
+    <button onclick="genNews()">Generate News</button>
+    <p id="output">Click the button and your generated news will appear here.</p>
+    </div>
+    
+    <br>
+    <div class="mainGen">
     <h3>About</h3>
-    <p>This "AI" was made by Rainier Hughes, all for fun. If you like this AI consider growing the database by helping the AI learn. ⬇</p>
-    <hr>
+    <p>This generator was made by Rainier Hughes, all for fun. If you like this generator consider growing the database by filling out this <a href="https://forms.gle/2vEpVyBpMyVx2nNX9">Google Form.</a> The generator works by picking phrases from a list and putting them together. The data is mostly from YOU!</p>
+    </div>
+    
+    <br>
+    <div class="mainGen">
+    <h3>Save Data</h3>
+    <p>This is for our devs to save data (You dont need it but feel free to mess around)</p>
+    Are you dev? (Will turn on teach mode for devs)<input type="checkbox" id="dev" onclick="devCheck()"><br><br>
+    <button onclick="printData()">Save Data (For Dev)</button>
+    <p id="data"></p>
+    </div>
     <p>Help grow the AI by giving data on our <a href="https://forms.gle/2vEpVyBpMyVx2nNX9">Google form.</a></p>
   </body>
   <script>
@@ -37,8 +48,11 @@ function genNews(){
   }
   else{
     document.getElementById("output").innerHTML = openIn + " " + personIn + " " + actionIn + " " + thingIn + " " + placeIn;
-  alert(openIn + " " + personIn + " " + actionIn + " " + thingIn + " " + placeIn)
+    if(document.getElementById('dev').checked){
+      alert(openIn + " " + personIn + " " + actionIn + " " + thingIn + " " + placeIn)
+      }
   }
+  if(document.getElementById('dev').checked){
   if(confirm("Good?")){
     good.push(open.indexOf(openIn) + "" + person.indexOf(personIn) + action.indexOf(actionIn) + thing.indexOf(thingIn) + place.indexOf(placeIn))
   }
@@ -46,8 +60,41 @@ function genNews(){
     bad.push(open.indexOf(openIn) + "" + person.indexOf(personIn) + action.indexOf(actionIn) + thing.indexOf(thingIn) + place.indexOf(placeIn))
   }
 }
+}
 function printData(){
   document.getElementById("data").innerHTML = "Good data:" + "<br>" + good + "<br>" + "Bad data:" + "<br>" + bad;
 }
   </script>
+  <style>
+    body{
+  background-color: #e6ffe6;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+.mainGen{
+  background-color: rgb(96, 206, 96);
+  padding: 20px;
+  border-radius: 25px;
+  border-style: solid;
+  border-color: green;
+}
+button{
+  border-color: green;
+  background-color: rgb(96, 206, 96);
+  border-radius: 25px;
+  border-style: solid;
+  padding: 5px;
+  font-size: 15px;
+}
+button:hover{
+  border-color: green;
+  background-color: rgb(96, 187, 96);
+  border-radius: 25px;
+  border-style: solid;
+  padding: 5px;
+  font-size: 15px;
+}
+
+
+  </style>
 </html>
