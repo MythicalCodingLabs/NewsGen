@@ -3,7 +3,7 @@
 <html>
   <head>
     
-    <script src="https://donorbox.org/widget.js" paypalExpress="false"></script>
+    <script src="https://donorbox.org/widget.js" paypalExpress="true"></script>
     <link rel="stylesheet" href="lib/style.css">
     <script src="lib/script.js"></script>
     <title>Random News Gen</title>
@@ -24,7 +24,7 @@
     <div class="mainGen">
     <h3>About</h3>
     <p>This generator was made by Rainier Hughes, all for fun. If you like this generator consider growing the database by filling out this <a href="https://forms.gle/2vEpVyBpMyVx2nNX9">Google Form.</a> The generator works by picking phrases from a list and putting them together. The data is mostly from YOU!</p>
-    <p>Help maintain the sity by donating! Every cent counts.</p><form action="donate.html"><button>Donate :)</button></form>
+    <p>Help maintain the site by donating! Every cent counts.</p><form action="donate.html"><button>Donate :)</button></form>
     </div>
     
     <br>
@@ -44,6 +44,7 @@
     const thing = ["a massive fish", "a person", "a packet of venna beef hot dogs", "an Epi Pen", "a small Gopher", "a knife", "lip balm", "The Declaration of Independence", "a Lemon", "a tube of Raspberry Flavored toothpaste", "a Stick of dynamite", "a chair", "a table", "a door", "an airplane", "a rifle", "a small child", "415 children", "a chromebook", "a sink", "a cheese wheel", "a bottle of hand sanitizer"]
     const place = ["at vidcon.", "in a park.", "in his house.", "at a Mc Donald's.", "in Nantucket.", "in the Polar ice caps.", "at The US capital.", "in The Museum Of Science and Industry.", "in The Mall of America", "in The Death Star", "in a Hospital", "in a Gym", "in a Police station", "at Twitter Headquarters", "on amazon", "in a school", "at his local zoo", "in a daycare", "in alaska"]
     const action2 = ["eat", "hide", "kill", "smell", "smoke", "lick", "bowl with", "assult", "kiss", "burn", "feed", "drink", "dropkick", "paint", "saw", "shoot", "trade", "sit", "destroy"]
+    const response = ['"Very odd."', '"I am permanently traumatized."', "I was scared for my life!", '"I just couldnt stop him!"', '"He was insane!"']
     const good = []
     const bad = [12043,10042,10344,97,65,14023,10042,732,2148,2082,88,11324,12020,11044,1088,1756,14123,1627,13143,14131,593]
 function genNews(){
@@ -54,13 +55,15 @@ function genNews(){
   var placeIn = place.at(Math.floor(Math.random() * place.length))
   var actionIn2 = action2.at(Math.floor(Math.random() * action2.length))
   var thingIn2 = thing.at(Math.floor(Math.random() * thing.length))
-  if(bad.includes(open.indexOf(openIn) + "" + person.indexOf(personIn) + action.indexOf(actionIn) + thing.indexOf(thingIn) + place.indexOf(placeIn) + action.indexOf(actionIn2) + thing.indexOf(thingIn2))){
+  var responseIn = response.at(Math.floor(Math.random() * response.length))
+  var personIn2 = person.at(Math.floor(Math.random() * person.length))
+  if(bad.includes(open.indexOf(openIn) + "" + person.indexOf(personIn) + action.indexOf(actionIn) + thing.indexOf(thingIn) + place.indexOf(placeIn) + action.indexOf(actionIn2) + thing.indexOf(thingIn2) + response.indexOf(responseIn) + person.indexOf(personIn2))){
    genNews()
   }
   else{
-    document.getElementById("output").innerHTML = openIn + " " + personIn + " was caught " + actionIn + " " + thingIn + " " + placeIn + " After " + personIn + " was caught, he proceeded to " + actionIn2 + " " + thingIn2 + ".";
+    document.getElementById("output").innerHTML = openIn + " " + personIn + " was caught " + actionIn + " " + thingIn + " " + placeIn + " After " + "the suspect was caught, he proceeded to " + actionIn2 + " " + thingIn2 + ". We asked " + personIn2 + ", an innocent bystander, how they felt about the incident. He responded " + responseIn + ".";
     if(document.getElementById('dev').checked){
-      alert(openIn + " " + personIn + " was caught " + actionIn + " " + thingIn + " " + placeIn + " After " + personIn + " was caught, he proceeded to " + actionIn2 + " " + thingIn2 + ".")
+      alert(openIn + " " + personIn + " was caught " + actionIn + " " + thingIn + " " + placeIn + " After " + personIn + " was caught, he proceeded to " + actionIn2 + " " + thingIn2 + ". We asked " + personIn2 + ", an innocent bystander, how he felt about the incident. He responded " + responseIn + ".")
       }
   }
   if(document.getElementById('dev').checked){
